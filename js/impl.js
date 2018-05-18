@@ -1,17 +1,18 @@
-var wordDisp;
-var hasBegun = false;
-var sectionNum = 0;
-var startend = [4];
-var state = 0;
+var baselineWords = ["rose", "daffodil", "sunflower", "daisy", "tulip", "fly", "mosquito", "moth", "gnat", "roach", "teriffic", "love", "happy", "joy", "good", "vomit", "poison", "hatred", "evil", "bad"];
+var testWords = ["John", "Paul", "Mike", "Kevin", "Steve", "Amy", "Joan", "Lisa", "Sarah",. "Diana", "Executive", "Management", "salary", "office", "business", "Home", "Parents", "Children", "family", "marriage"];
 
-$(document).ready(function() {
-	wordDisp = $(".display#word");
-	
-	wordDisp.text = "You are about to being the test.  Press space to continue.";
-	
-});
+function getBaselineWord()
+{
+    return baselineWords[Math.floor(Math.random() * baselineWords.length)];
+}
 
-$(document).keypress(function(e) {
+function getTestWord()
+{
+    return baselineWords[Math.floor(Math.random() * testWords.length)];
+}
 
-	startend[state] = e.timeStamp;
-});
+function updateText(text)
+{
+    $("#word").text = text;
+}
+
