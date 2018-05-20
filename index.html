@@ -6,7 +6,8 @@
 	</head>
 	<body>
 		<script src="bower_components/jquery/dist/jquery.js"></script>
-		<script src="bower_components/materialize/dist/js/materialize.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+            
         <script src="js/impl.js"></script>
         
         
@@ -25,7 +26,7 @@
                     <li>family (Home, Parents, Children, Family, Marriage)</li>
                 </ul>
                 <h1>Press "f" for Male or Career, press "j" for Female or Family.</h1>
-                <h1>Press space to start</h1>
+                <a class="btn" onclick="startTest()">Click to continue</a>
             </div>
             <div id="section1" class="">
                 <h1>Section 1</h1>
@@ -41,7 +42,7 @@
                     <li>Bad (vomit, poison, hatred, evil, bad)</li>
                 </ul>
                 <h1>Press "f" for flower or good, press "j" for insect or bad.</h1>
-                <h1>Press space to start</h1>
+                <a class="btn" onclick="startTest()">Click to start</a>
             </div>
         </div>
         
@@ -51,7 +52,32 @@
         
         <div id="post" class="container hide">
             <h1>Done. Please answer a few questions now.</h1>
-            
+            <div class="row">
+                <div class="input-field col s6">
+                    <select id="genderSelect">
+                        <option value="" disabled selected>Gender</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Other</option>
+                    </select>
+                    <label>Gender</label>
+                </div>
+                <div class="input-field col s6">
+                    <select id="ageSelect">
+                        <option value="" disabled selected>Grade</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <label>Grade Level</label>
+                </div>
+            </div>
+            <a class="btn" onclick="generateResults()">submit</a>
+        </div>
+        <div id="results" class="container hide">
+            <h1>DO NOT CLOSE THIS PAGE! SHOW IT TO THE EXPERIMENTER!</h1>
+            <h4 id="resdisplay"></h4>
         </div>
         
 		<!--

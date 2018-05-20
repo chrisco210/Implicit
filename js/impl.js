@@ -15,6 +15,9 @@ var count = 0;
 
 var tickC;
 
+var genderInstance;
+var ageInstance;
+
 $(document).ready(function() {
         $(window).keypress(function(e)
         {
@@ -30,6 +33,13 @@ $(document).ready(function() {
                 jQ = true;
             }
         });
+    
+    var elems = document.querySelectorAll("select");
+    M.FormSelect.init(elems);  
+    
+    genderInstance = M.FormSelect.getInstance($("#genderSelect")[0]);
+    ageInstance = M.FormSelect.getInstance($("#ageSelect")[0]);
+        
 });
 
 
@@ -107,8 +117,12 @@ function endTest()
     count = 0;
 }
 
-
-
+function generateResults()
+{
+    $("#post").addClass("hide");
+    $("#results").removeClass("hide");
+    $("#resdisplay").text(baselineCount + ", " + testCount + ", " + genderInstance.getSelectedValues() + ", " + ageInstance.getSelectedValues());
+}
 
 function startTest()
 {
@@ -117,5 +131,5 @@ function startTest()
     tickC = window.setInterval(function() {
         tick();
     }, 25);
-    nextWord();
 }
+
