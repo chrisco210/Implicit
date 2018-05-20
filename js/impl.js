@@ -11,6 +11,10 @@ var jQ = false;
 
 var tickCount = 0;
 
+var count = 0;
+
+var tickC;
+
 $(document).ready(function() {
         $(window).keypress(function(e)
         {
@@ -36,7 +40,7 @@ function getBaselineWord()
 
 function getTestWord()
 {
-    return baselineWords[Math.floor(Math.random() * testWords.length)];
+    return testWords[Math.floor(Math.random() * testWords.length)];
 }
 
 function updateText(text)
@@ -46,6 +50,7 @@ function updateText(text)
 
 function nextWord()
 {
+    count++;
     if(currentState == 0)
     {
         updateText(getBaselineWord());   
@@ -79,16 +84,27 @@ function tick()
 
 function endTest()
 {
-    $("#test").hide();
+    $("#test").addClass("hide");
+    
+    window.clearInterval(tickC);
+    tickCount = 0;
     if(currentState == 0)
     {
         currentState++;
+        baselineCount = count;
+        $("#instruct").removeClass("hide");
         
+        $("#section1").addClass("hide");
+        $("#section2").removeClass("hide");
     }
     else if(currentState == 1)
     {
-        
+        testCount = count;
+        $("#post").removeClass("hide");
+        $("#instruct").addClass("hide");
     }
+    
+    count = 0;
 }
 
 
@@ -96,8 +112,9 @@ function endTest()
 
 function startTest()
 {
-    $("#test").show();
-    window.setInterval(function() {
+    $("#instruct").addClass("hide");
+    $("#test").removeClass("hide");
+    tickC = window.setInterval(function() {
         tick();
     }, 25);
     nextWord();
