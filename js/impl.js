@@ -131,5 +131,6 @@ function startTest()
     tickC = window.setInterval(function() {
         tick();
     }, 25);
+    nextWord();
 }
 
