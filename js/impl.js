@@ -128,6 +128,18 @@ function startTest()
 {
     $("#instruct").addClass("hide");
     $("#test").removeClass("hide");
+	
+	if(currentState == 0)
+	{
+		$("#right-disp").text("j for bug/bad");
+		$("#left-disp").text("f for flower/good");
+	}
+	else
+	{
+		$("#right-disp").text("j for female/family");
+		$("#left-disp").text("f for male/career");
+	}
+	
     tickC = window.setInterval(function() {
         tick();
     }, 25);
